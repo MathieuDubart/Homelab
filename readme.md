@@ -16,7 +16,7 @@ Installation
 1. Clone the Repository
 ```Bash
 
-git clone [https://github.com/MathieuDubart/Homelab.git](https://github.com/MathieuDubart/Homelab.git)
+git clone https://github.com/MathieuDubart/Homelab.git
 cd Homelab
 ```
 
