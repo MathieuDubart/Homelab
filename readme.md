@@ -16,8 +16,8 @@ Installation
 1. Clone the Repository
 ```Bash
 
-git clone [https://github.com/yourusername/orbstack-monitor-ios.git](https://github.com/yourusername/orbstack-monitor-ios.git)
-cd orbstack-monitor-ios
+git clone [https://github.com/MathieuDubart/Homelab.git](https://github.com/MathieuDubart/Homelab.git)
+cd Homelab
 ```
 
 2. Build & Run
