@@ -28,7 +28,7 @@ cd Homelab
 
 ## Configuration
 
-## Once the app is launched:
+### Once the app is launched:
 
   → Tap the Gear Icon ⚙️ in the top right.
   
@@ -38,7 +38,7 @@ cd Homelab
   
   → The dashboard will automatically start polling data.
 
-## Tech Stack
+### Tech Stack
 
   → SwiftUI: 100% Declarative UI.
   
