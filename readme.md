@@ -1,4 +1,4 @@
-# Homelab 🚀
+# Homelab 🏠
 
 A lightweight, native iOS dashboard to monitor and control your self-hosted Coolify
 
