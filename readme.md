@@ -17,7 +17,8 @@ Installation
 ```Bash
 
 git clone [https://github.com/yourusername/orbstack-monitor-ios.git](https://github.com/yourusername/orbstack-monitor-ios.git)
-cd orbstack-monitor-ios```
+cd orbstack-monitor-ios
+```
 
 2. Build & Run
 
