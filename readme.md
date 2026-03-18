@@ -12,7 +12,7 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 
 ## Prerequisites
 
-Installation
+### Installation
 1. Clone the Repository
 ```Bash
 
@@ -28,7 +28,7 @@ cd Homelab
 
     Press Cmd + R to build and run.
 
-Configuration
+### Configuration
 
 Once the app is launched:
 
@@ -40,7 +40,7 @@ Once the app is launched:
 
     The dashboard will automatically start polling data.
 
-Tech Stack
+### Tech Stack
 
     SwiftUI: 100% Declarative UI.
 
