@@ -22,11 +22,9 @@ cd Homelab
 
 2. Build & Run
 
-    Connect your iPhone via USB or select a Simulator.
-
-    Ensure your Team is selected in Signing & Capabilities.
-
-    Press Cmd + R to build and run.
+→ Connect your iPhone via USB or select a Simulator.
+→ Ensure your Team is selected in Signing & Capabilities.
+→ Press Cmd + R to build and run.
 
 ### Configuration
 
