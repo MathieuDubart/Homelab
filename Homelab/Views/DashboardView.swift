@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DashboardView: View {
     @AppStorage("glances_url") private var glancesUrl: String = ""
+    @AppStorage("coolify_token") private var coolifyToken: String = ""
+    @AppStorage("coolify_url") private var coolifyUrl: String = ""
     
     @State private var viewModel: DashboardViewModel?
     @State private var showSettings = false
@@ -90,13 +92,28 @@ struct DashboardView: View {
                 } else {
                     ForEach(vm.sortedContainers) { container in
                         ContainerRow(container: container)
-                            .swipeActions(edge: .trailing) {
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                                 Button {
-                                    
+                                    performAction(.restart, for: container)
                                 } label: {
                                     Label("Restart", systemImage: "arrow.clockwise")
                                 }
                                 .tint(.orange)
+                                
+                                if container.status.contains("Up") {
+                                    Button(role: .destructive) {
+                                        performAction(.stop, for: container)
+                                    } label: {
+                                        Label("Stop", systemImage: "stop.fill")
+                                    }
+                                } else {
+                                    Button {
+                                        performAction(.start, for: container)
+                                    } label: {
+                                        Label("Start", systemImage: "play.fill")
+                                    }
+                                    .tint(.green)
+                                }
                             }
                     }
                     .animation(.default, value: vm.sortedContainers)
@@ -131,6 +148,20 @@ struct DashboardView: View {
             viewModel?.stopMonitoring()
             viewModel = DashboardViewModel(host: glancesUrl)
             viewModel?.startMonitoring()
+        }
+    }
+    
+    private func performAction(_ action: CoolifyService.Action, for container: DockerContainer) {
+        let service = CoolifyService(host: coolifyUrl, token: coolifyToken)
+        
+        Task {
+            do {
+                try await service.execute(action: action, for: container.name)
+                print("🚀 Action réussie !")
+                
+            } catch {
+                print("❌ Erreur Action Coolify: \(error)")
+            }
         }
     }
 }

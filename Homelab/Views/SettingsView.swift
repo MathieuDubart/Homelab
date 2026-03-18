@@ -10,6 +10,9 @@ import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("glances_url") private var glancesUrl: String = "https://"
+    @AppStorage("coolify_token") private var coolifyToken: String = ""
+    @AppStorage("coolify_url") private var coolifyUrl: String = "https://"
+    
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -22,6 +25,18 @@ struct SettingsView: View {
                         .keyboardType(.URL)
                     
                     Text(LocalizedStringResource.cloudflareTunnelExempleUrl)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                
+                Section(header: Text(LocalizedStringResource.coolifyApi)) {
+                    TextField(LocalizedStringResource.cloudflareTunnelExempleUrl, text: $coolifyUrl)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.URL)
+                    
+                    SecureField(LocalizedStringResource.apiToken, text: $coolifyToken)
+                    Text(LocalizedStringResource.generableInCoolifyInstance)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
