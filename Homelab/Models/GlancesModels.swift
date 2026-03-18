@@ -13,21 +13,24 @@ nonisolated struct CPUStats: Codable, Sendable {
     let total: Double
 }
 
-nonisolated struct RAMStats: Codable, Sendable {
+nonisolated struct RAMStats: Codable {
     let percent: Double
-    let used: Int
-    let total: Int
+    let used: Int64
+    let total: Int64
 }
 
-nonisolated struct DockerContainer: Codable, Identifiable, Sendable {
+nonisolated struct DockerContainer: Codable, Identifiable, Sendable, Equatable {
     var id: String { name }
     let name: String
-    let cpu: Double
-    let memory_usage: Int
     let status: String
-
+    
+    let cpu: Double?
+    let memoryUsage: Int?
+    
     enum CodingKeys: String, CodingKey {
-        case name, cpu, memory_usage, status
+        case name, status
+        case cpu = "cpu_percent"
+        case memoryUsage = "memory_usage"
     }
 }
 

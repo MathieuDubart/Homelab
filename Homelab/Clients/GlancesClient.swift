@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 final class GlancesClient: Sendable {
     private let baseURL: URL
     private let apiRoute: String
@@ -18,9 +17,9 @@ final class GlancesClient: Sendable {
     }
     
     func fetchFullSnapshot() async throws -> ServerSnapshot {
-        async let cpuReq = fetch(endpoint: "/cpu") as CPUStats
-        async let ramReq = fetch(endpoint: "/mem") as RAMStats
-        async let dockerReq = fetch(endpoint: "/container") as [DockerContainer]
+        async let cpuReq = fetch(endpoint: "cpu") as CPUStats
+        async let ramReq = fetch(endpoint: "mem") as RAMStats
+        async let dockerReq = fetch(endpoint: "containers") as [DockerContainer]
         
         return try await ServerSnapshot(
             cpu: cpuReq,
