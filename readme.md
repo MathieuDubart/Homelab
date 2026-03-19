@@ -11,12 +11,9 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 - **Secure Persistence**: Server URLs and API Tokens are stored locally using `@AppStorage`.
 
 ## Installation
-### 1. Clone the Repository
-```Bash
+### 1. Get the latest release
 
-git clone https://github.com/MathieuDubart/homelab.git
-cd Homelab
-```
+  → Go to the [Releases page](https://github.com/MathieuDubart/homelab/releases) and download the latest release version.
 
 ### 2. Build & Run
 
