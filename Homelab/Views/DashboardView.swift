@@ -157,10 +157,9 @@ struct DashboardView: View {
         Task {
             do {
                 try await service.execute(action: action, for: container.name)
-                print("🚀 Action réussie !")
                 
             } catch {
-                print("❌ Erreur Action Coolify: \(error)")
+                print("Error on action \(action) for container \(container.name): \(error)")
             }
         }
     }
