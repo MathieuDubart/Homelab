@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct DashboardView: View {
-    @AppStorage("glances_url") private var glancesUrl: String = ""
-    @AppStorage("coolify_token") private var coolifyToken: String = ""
-    @AppStorage("coolify_url") private var coolifyUrl: String = ""
+    
+    @AppStorage("glances_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab"))
+    private var glancesUrl: String = ""
+    @AppStorage("coolify_token", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyToken: String = ""
+    @AppStorage("coolify_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyUrl: String = ""
     
     @State private var viewModel: DashboardViewModel?
     @State private var showSettings = false

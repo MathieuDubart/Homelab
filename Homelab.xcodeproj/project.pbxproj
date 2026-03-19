@@ -6,14 +6,76 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DB6BD9F42F6C6BF600836657 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6BD9F32F6C6BF600836657 /* WidgetKit.framework */; };
+		DB6BD9F62F6C6BF600836657 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6BD9F52F6C6BF600836657 /* SwiftUI.framework */; };
+		DB6BDA072F6C6BF600836657 /* Homelab-widgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = DB6BD9F12F6C6BF600836657 /* Homelab-widgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB6BDA052F6C6BF600836657 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB066A772F6B288900BF847D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB6BD9F02F6C6BF600836657;
+			remoteInfo = "Homelab-widgetsExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DB6BDA0C2F6C6BF600836657 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DB6BDA072F6C6BF600836657 /* Homelab-widgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		DB066A7F2F6B288900BF847D /* Homelab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homelab.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6BD9F12F6C6BF600836657 /* Homelab-widgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Homelab-widgetsExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB6BD9F32F6C6BF600836657 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		DB6BD9F52F6C6BF600836657 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		DB6BDA0D2F6C6C0D00836657 /* Homelab-widgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Homelab-widgetsExtension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		DB6BDA082F6C6BF600836657 /* Exceptions for "Homelab-widgets" folder in "Homelab-widgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */;
+		};
+		DBE39D8F2F6C75A600CF4D24 /* Exceptions for "Homelab" folder in "Homelab-widgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/GlancesModels.swift,
+			);
+			target = DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DB066A812F6B288900BF847D /* Homelab */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DBE39D8F2F6C75A600CF4D24 /* Exceptions for "Homelab" folder in "Homelab-widgetsExtension" target */,
+			);
 			path = Homelab;
+			sourceTree = "<group>";
+		};
+		DB6BD9F72F6C6BF600836657 /* Homelab-widgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				DB6BDA082F6C6BF600836657 /* Exceptions for "Homelab-widgets" folder in "Homelab-widgetsExtension" target */,
+			);
+			path = "Homelab-widgets";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +88,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB6BD9EE2F6C6BF600836657 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB6BD9F62F6C6BF600836657 /* SwiftUI.framework in Frameworks */,
+				DB6BD9F42F6C6BF600836657 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		DB066A762F6B288900BF847D = {
 			isa = PBXGroup;
 			children = (
+				DB6BDA0D2F6C6C0D00836657 /* Homelab-widgetsExtension.entitlements */,
 				DB066A812F6B288900BF847D /* Homelab */,
+				DB6BD9F72F6C6BF600836657 /* Homelab-widgets */,
+				DB6BD9F22F6C6BF600836657 /* Frameworks */,
 				DB066A802F6B288900BF847D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +115,18 @@
 			isa = PBXGroup;
 			children = (
 				DB066A7F2F6B288900BF847D /* Homelab.app */,
+				DB6BD9F12F6C6BF600836657 /* Homelab-widgetsExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		DB6BD9F22F6C6BF600836657 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB6BD9F32F6C6BF600836657 /* WidgetKit.framework */,
+				DB6BD9F52F6C6BF600836657 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +139,12 @@
 				DB066A7B2F6B288900BF847D /* Sources */,
 				DB066A7C2F6B288900BF847D /* Frameworks */,
 				DB066A7D2F6B288900BF847D /* Resources */,
+				DB6BDA0C2F6C6BF600836657 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DB6BDA062F6C6BF600836657 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				DB066A812F6B288900BF847D /* Homelab */,
@@ -69,6 +155,28 @@
 			productName = Homelab;
 			productReference = DB066A7F2F6B288900BF847D /* Homelab.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB6BDA092F6C6BF600836657 /* Build configuration list for PBXNativeTarget "Homelab-widgetsExtension" */;
+			buildPhases = (
+				DB6BD9ED2F6C6BF600836657 /* Sources */,
+				DB6BD9EE2F6C6BF600836657 /* Frameworks */,
+				DB6BD9EF2F6C6BF600836657 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				DB6BD9F72F6C6BF600836657 /* Homelab-widgets */,
+			);
+			name = "Homelab-widgetsExtension";
+			packageProductDependencies = (
+			);
+			productName = "Homelab-widgetsExtension";
+			productReference = DB6BD9F12F6C6BF600836657 /* Homelab-widgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +189,9 @@
 				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					DB066A7E2F6B288900BF847D = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					DB6BD9F02F6C6BF600836657 = {
 						CreatedOnToolsVersion = 26.3;
 					};
 				};
@@ -101,12 +212,20 @@
 			projectRoot = "";
 			targets = (
 				DB066A7E2F6B288900BF847D /* Homelab */,
+				DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		DB066A7D2F6B288900BF847D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB6BD9EF2F6C6BF600836657 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -123,7 +242,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB6BD9ED2F6C6BF600836657 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB6BDA062F6C6BF600836657 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */;
+			targetProxy = DB6BDA052F6C6BF600836657 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DB066A882F6B288A00BF847D /* Debug */ = {
@@ -254,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Homelab/Homelab.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LK2358MPL8;
@@ -288,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Homelab/Homelab.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LK2358MPL8;
@@ -317,6 +453,68 @@
 			};
 			name = Release;
 		};
+		DB6BDA0A2F6C6BF600836657 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Homelab-widgetsExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LK2358MPL8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Homelab-widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Homelab-widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.mathieu-dubart.Homelab.Homelab-widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DB6BDA0B2F6C6BF600836657 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Homelab-widgetsExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LK2358MPL8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Homelab-widgets/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Homelab-widgets";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "fr.mathieu-dubart.Homelab.Homelab-widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -334,6 +532,15 @@
 			buildConfigurations = (
 				DB066A8B2F6B288A00BF847D /* Debug */,
 				DB066A8C2F6B288A00BF847D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB6BDA092F6C6BF600836657 /* Build configuration list for PBXNativeTarget "Homelab-widgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB6BDA0A2F6C6BF600836657 /* Debug */,
+				DB6BDA0B2F6C6BF600836657 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

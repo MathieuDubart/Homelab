@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage("glances_url") private var glancesUrl: String = "https://"
-    @AppStorage("coolify_token") private var coolifyToken: String = ""
-    @AppStorage("coolify_url") private var coolifyUrl: String = "https://"
+    @AppStorage("glances_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var glancesUrl: String = "https://"
+    @AppStorage("coolify_token", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyToken: String = ""
+    @AppStorage("coolify_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyUrl: String = "https://"
     
     @Environment(\.dismiss) var dismiss
 

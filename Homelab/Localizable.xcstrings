@@ -26,6 +26,23 @@
         }
       }
     },
+    "checkStatsAtAGlance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your system stats at a Glance."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vérifiez les stats de votre système d’un coup d'oeil"
+          }
+        }
+      }
+    },
     "cloudflareTunnelExempleUrl" : {
       "extractionState" : "manual",
       "localizations" : {

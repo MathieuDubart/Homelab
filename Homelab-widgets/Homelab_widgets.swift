@@ -1,0 +1,145 @@
+//
+//  Homelab_widgets.swift
+//  Homelab-widgets
+//
+//  Created by Mathieu Dubart on 19/03/2026.
+//
+
+import WidgetKit
+import SwiftUI
+
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date(), cpu: 0, ram: 0)
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        let entry = SimpleEntry(date: Date(), cpu: 0, ram: 0)
+        completion(entry)
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
+        let sharedDefaults = UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")
+        let url = sharedDefaults?.string(forKey: "glances_url") ?? ""
+        
+        Task {
+            let stats = await fetchWidgetData(url: url)
+            let containers = await fetchTopContainers(url: url)
+            let entry = SimpleEntry(date: Date(), cpu: stats.cpu, ram: stats.mem, topContainers: containers)
+            
+            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())!
+            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+            completion(timeline)
+        }
+    }
+}
+
+struct WidgetContainer: Identifiable {
+    let id = UUID()
+    let name: String
+    let memoryUsage: Double
+    let memoryLimit: Double
+    
+    var usagePercentage: Double {
+        (memoryUsage / memoryLimit) * 100
+    }
+}
+
+struct SimpleEntry: TimelineEntry {
+    let date: Date
+    let cpu: Double
+    let ram: Double
+    var topContainers: [WidgetContainer] = []
+}
+
+struct Homelab_widgetsEntryView : View {
+    var entry: Provider.Entry
+    
+    var body: some View {
+        Section{
+            VStack(spacing: 4) {
+                WidgetGauge(label: "PROCESSOR", value: entry.cpu, color: .indigo)
+                WidgetGauge(label: "MEMORY", value: entry.ram, color: .green)
+            }
+        }
+        
+        Section {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("TOP RAM CONSUMERS")
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundColor(.secondary)
+                    .padding(.top, 4)
+                
+                ForEach(entry.topContainers) { container in
+                    ContainerRow(container: container)
+                }
+            }
+        }
+    }
+}
+
+struct Homelab_widgets: Widget {
+    let kind: String = "Homelab_widgets"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            Homelab_widgetsEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
+        }
+        .configurationDisplayName("systemMonitorTitle")
+        .description("checkStatsAtAGlance")
+        .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+struct QuickStats {
+    let cpu: Double
+    let mem: Double
+}
+
+func fetchWidgetData(url: String) async -> QuickStats {
+    guard let finalURL = URL(string: "\(url)/api/4/quicklook") else {
+        return QuickStats(cpu: 0, mem: 0)
+    }
+    
+    do {
+        let (data, _) = try await URLSession.shared.data(from: finalURL)
+        if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            let cpu = json["cpu"] as? Double ?? 0
+            let mem = json["mem"] as? Double ?? 0
+            return QuickStats(cpu: cpu, mem: mem)
+        }
+    } catch {
+        print("Widget Fetch Error: \(error)")
+    }
+    return QuickStats(cpu: 0, mem: 0)
+}
+
+private func fetchTopContainers(url: String) async -> [WidgetContainer] {
+    guard let finalURL = URL(string: "\(url)/api/4/containers") else { return [] }
+    
+    do {
+        let (data, _) = try await URLSession.shared.data(from: finalURL)
+        
+        let rawContainers = try JSONDecoder().decode([DockerContainer].self, from: data)
+        
+        let sorted = rawContainers.sorted { ($0.memoryUsage ?? 0) > ($1.memoryUsage ?? 0) }
+        let top3 = sorted.prefix(3).map { container in
+            WidgetContainer(
+                name: container.name,
+                memoryUsage: Double(container.memoryUsage ?? 0) / (1024 * 1024),
+                memoryLimit: 0
+            )
+        }
+        return Array(top3)
+    } catch {
+        return []
+    }
+}
+
+#Preview(as: .systemSmall) {
+    Homelab_widgets()
+} timeline: {
+    SimpleEntry(date: .now, cpu: 45, ram: 60)
+    SimpleEntry(date: .now, cpu: 72, ram: 85)
+}

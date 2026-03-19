@@ -8,6 +8,7 @@
 
 import Foundation
 import Observation
+import WidgetKit
 
 @Observable
 class DashboardViewModel {
@@ -52,6 +53,7 @@ class DashboardViewModel {
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in
             Task { [weak self] in
                 await self?.fetchData()
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
     }
