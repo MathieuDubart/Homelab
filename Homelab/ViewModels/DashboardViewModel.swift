@@ -83,4 +83,43 @@ class DashboardViewModel {
     }
     
     
+    func checkAlerts(cpu: Double, ram: Double, containers: [DockerContainer]) {
+        if cpu > 90 {
+            NotificationManager.instance.sendAlert(
+                title: "🚨 CPU: \(Int(cpu))%",
+                body: "\(LocalizedStringResource.serverIsStruggling)"
+            )
+        }
+        
+        if ram > 90 {
+            NotificationManager.instance.sendAlert(
+                title: "🚨 RAM: \(Int(ram))%",
+                body: "\(LocalizedStringResource.serverIsStruggling)"
+            )
+        }
+        
+        if cpu > 70 && cpu < 90 {
+            NotificationManager.instance.sendAlert(
+                title: "⚠️ CPU: \(Int(cpu))%",
+                body: "\(LocalizedStringResource.highCpuUsage)"
+            )
+        }
+        
+        if ram > 70 && ram < 90 {
+            NotificationManager.instance.sendAlert(
+                title: "⚠️ RAM: \(Int(ram))%",
+                body: "\(LocalizedStringResource.highMemoryUsage)"
+            )
+        }
+        
+        for container in containers {
+            if container.status != "running" {
+                NotificationManager.instance.sendAlert(
+                    title: "🚨 Container Stopped",
+                    body: "\(container.name) is \(container.status)."
+                )
+            }
+        }
+    }
+    
 }

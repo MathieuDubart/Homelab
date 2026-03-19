@@ -59,12 +59,20 @@
 			);
 			target = DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */;
 		};
+		DBE39E272F6C7F2A00CF4D24 /* Exceptions for "Homelab" folder in "Homelab" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DB066A7E2F6B288900BF847D /* Homelab */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		DB066A812F6B288900BF847D /* Homelab */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				DBE39E272F6C7F2A00CF4D24 /* Exceptions for "Homelab" folder in "Homelab" target */,
 				DBE39D8F2F6C75A600CF4D24 /* Exceptions for "Homelab" folder in "Homelab-widgetsExtension" target */,
 			);
 			path = Homelab;
@@ -394,6 +402,7 @@
 				DEVELOPMENT_TEAM = LK2358MPL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Homelab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -429,6 +438,7 @@
 				DEVELOPMENT_TEAM = LK2358MPL8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Homelab/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
