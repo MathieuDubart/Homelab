@@ -15,8 +15,8 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 ## Installation
 ### 1. Get the latest release
 
-  → Go to the [Releases page](https://github.com/MathieuDubart/homelab/releases) and download the latest release version.
-
+  → Go to the [Releases page](https://github.com/MathieuDubart/homelab/releases) and download the latest release version or download the app on [Testflight](https://testflight.apple.com/join/1ENGpuwn).
+  
 ### 2. Build & Run
 
   → Connect your iPhone via USB or select a Simulator.
