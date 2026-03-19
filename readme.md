@@ -14,7 +14,7 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 ### 1. Clone the Repository
 ```Bash
 
-git clone https://github.com/MathieuDubart/coolify-panel.git
+git clone https://github.com/MathieuDubart/homelab.git
 cd Homelab
 ```
 
