@@ -9,6 +9,7 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 - **Coolify Integration**: Start, Stop, or Restart your services directly from the app using iOS Swipe Actions.
 - **Auto-Mapping**: Automatically links Docker container names to Coolify Service UUIDs.
 - **Secure Persistence**: Server URLs and API Tokens are stored locally using `@AppStorage`.
+- **Widgets**: Keep track of your server at a glance. (Currently available in small and medium sizes)
 
 ## Installation
 ### 1. Get the latest release
