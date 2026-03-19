@@ -10,6 +10,7 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 - **Auto-Mapping**: Automatically links Docker container names to Coolify Service UUIDs.
 - **Secure Persistence**: Server URLs and API Tokens are stored locally using `@AppStorage`.
 - **Widgets**: Keep track of your server at a glance. (Currently available in small and medium sizes)
+- **Notifications**: Get alerts when your server use too much CPU/RAM.
 
 ## Installation
 ### 1. Get the latest release
