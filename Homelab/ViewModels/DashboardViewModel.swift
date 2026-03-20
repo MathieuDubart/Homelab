@@ -37,11 +37,11 @@ class DashboardViewModel {
         return containers.sorted { ($0.memoryUsage ?? 0) > ($1.memoryUsage ?? 0) }
     }
     
-    private let client: GlancesClient
+    private let client: GlancesService
     private var refreshTimer: Timer?
 
     init(host: String) {
-        self.client = GlancesClient(host: host, apiVersion: "4")
+        self.client = GlancesService(host: host, apiVersion: "4")
     }
 
     /// Entry point for monitoring

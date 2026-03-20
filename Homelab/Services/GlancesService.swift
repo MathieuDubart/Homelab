@@ -1,5 +1,5 @@
 //
-//  GlancesClient.swift
+//  GlancesService.swift
 //  Homelab
 //
 //  Created by Mathieu Dubart on 18/03/2026.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class GlancesClient: Sendable {
+final class GlancesService: Sendable {
     private let baseURL: URL
     private let apiRoute: String
     
