@@ -19,28 +19,23 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text(LocalizedStringResource.serverConfiguration)) {
+                Section(header: Text(LocalizedStringResource.serverConfiguration), footer:Text(LocalizedStringResource.cloudflareTunnelExempleUrl)) {
                     TextField(LocalizedStringResource.cloudflareTunnelExempleUrl, text: $glancesUrl)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .keyboardType(.URL)
-                    
-                    Text(LocalizedStringResource.cloudflareTunnelExempleUrl)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
                 }
                 
-                Section(header: Text(LocalizedStringResource.coolifyApi)) {
+                Section(header: Text(LocalizedStringResource.coolifyApi), footer:Text(LocalizedStringResource.generableInCoolifyInstance)) {
                     TextField(LocalizedStringResource.cloudflareTunnelExempleUrl, text: $coolifyUrl)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .keyboardType(.URL)
                     
                     SecureField(LocalizedStringResource.apiToken, text: $coolifyToken)
-                    Text(LocalizedStringResource.generableInCoolifyInstance)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    
                 }
+
                 
                 Section(header: Text(LocalizedStringResource.torboxStorage), footer: Text(LocalizedStringResource.apiTokenCanBeFoundOnTorbox)) {
                     SecureField(LocalizedStringResource.apiToken, text: $torboxToken)
