@@ -15,7 +15,6 @@ struct DashboardView: View {
     @AppStorage("coolify_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyUrl: String = ""
     
     @State private var viewModel: DashboardViewModel?
-    @State private var showSettings = false
     
     var body: some View {
         NavigationStack {
@@ -29,17 +28,6 @@ struct DashboardView: View {
                 }
             }
             .navigationTitle(LocalizedStringResource.systemMonitorTitle)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button { showSettings = true } label: {
-                        Image(systemName: "gearshape.fill")
-                            .foregroundStyle(.blue)
-                    }
-                }
-            }
-            .sheet(isPresented: $showSettings) {
-                SettingsView()
-            }
             .onAppear {
                 refreshViewModel()
             }
@@ -57,10 +45,7 @@ struct DashboardView: View {
         } description: {
             Text(LocalizedStringResource.enterGlancesUrl)
         } actions: {
-            Button(LocalizedStringResource.openSettings) {
-                showSettings = true
-            }
-            .buttonStyle(.borderedProminent)
+            NavigationLink("openSettings", destination: SettingsView())
         }
     }
     

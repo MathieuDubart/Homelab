@@ -12,6 +12,7 @@ struct SettingsView: View {
     @AppStorage("glances_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var glancesUrl: String = "https://"
     @AppStorage("coolify_token", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyToken: String = ""
     @AppStorage("coolify_url", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab")) private var coolifyUrl: String = "https://"
+    @AppStorage("torbox_token", store: UserDefaults(suiteName: "group.fr.mathieu-dubart.homelab"))var torboxToken: String = ""
     
     @Environment(\.dismiss) var dismiss
 
@@ -41,20 +42,14 @@ struct SettingsView: View {
                         .foregroundColor(.secondary)
                 }
                 
-                Section {
-                    Button(LocalizedStringResource.saveAndClose) {
-                        dismiss()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .alignmentGuide(.leading) { _ in 0 }
+                Section(header: Text(LocalizedStringResource.torboxStorage), footer: Text(LocalizedStringResource.apiTokenCanBeFoundOnTorbox)) {
+                    SecureField(LocalizedStringResource.apiToken, text: $torboxToken)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
+                
             }
             .navigationTitle(LocalizedStringResource.parameters)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("OK") { dismiss() }
-                }
-            }
         }
     }
 }
