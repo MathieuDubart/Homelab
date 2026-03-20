@@ -35,6 +35,8 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
   → Enter your Glances/Coolify URL (e.g., https://coolify.yourdomain.com).
   
   → Paste your Coolify API Token.
+
+  → Paste your TorBox API Token.
   
   → The dashboard will automatically start polling data.
 
