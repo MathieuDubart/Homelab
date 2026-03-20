@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import WidgetKit
 
 @MainActor
 class TorBoxViewModel: ObservableObject {
@@ -62,7 +63,7 @@ class TorBoxViewModel: ObservableObject {
             
             let fetchedIDs = Set(freshTorrents.map { $0.id })
             DeletedTorrentsManager.instance.clean(keeping: fetchedIDs)
-            
+            WidgetCenter.shared.reloadAllTimelines()
         } catch {
             self.errorMessage = error.localizedDescription
         }
@@ -108,11 +109,13 @@ class TorBoxViewModel: ObservableObject {
         }
         
         DeletedTorrentsManager.instance.markAsDeleted(id: id)
+        WidgetCenter.shared.reloadAllTimelines()
         
         do {
             try await service.removeTorrent(id: id)
             try? await Task.sleep(nanoseconds: 1_000_000_000)
             await loadTorrents()
+            
         } catch {
             print("⚠️ Silently handled TorBox Delete Crash for ID: \(id)")
         }

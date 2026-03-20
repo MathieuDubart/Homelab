@@ -12,6 +12,7 @@ import SwiftUI
 struct Homelab_widgetsBundle: WidgetBundle {
     var body: some Widget {
         Homelab_widgets()
+        TorBoxStorageWidgets()
         Homelab_widgetsControl()
         Homelab_widgetsLiveActivity()
     }

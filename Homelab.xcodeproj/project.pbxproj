@@ -55,7 +55,12 @@
 		DBE39D8F2F6C75A600CF4D24 /* Exceptions for "Homelab" folder in "Homelab-widgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Managers/DeletedTorrentsManager.swift,
 				Models/GlancesModels.swift,
+				Models/TorBoxItem.swift,
+				Models/TorBoxResponse.swift,
+				Models/TorBoxStatus.swift,
+				Services/TorBoxService.swift,
 			);
 			target = DB6BD9F02F6C6BF600836657 /* Homelab-widgetsExtension */;
 		};
@@ -63,6 +68,19 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+			);
+			target = DB066A7E2F6B288900BF847D /* Homelab */;
+		};
+		DBFF83732F6DBDA20041780C /* Exceptions for "Homelab-widgets" folder in "Homelab" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				TorBoxWidgets/MediumTorBoxRow.swift,
+				TorBoxWidgets/SmallTorBoxRow.swift,
+				TorBoxWidgets/TorBoxEntry.swift,
+				TorBoxWidgets/TorBoxIntents.swift,
+				TorBoxWidgets/TorBoxProvider.swift,
+				TorBoxWidgets/TorBoxStorageWidgets.swift,
+				TorBoxWidgets/TorBoxWidgetEntryView.swift,
 			);
 			target = DB066A7E2F6B288900BF847D /* Homelab */;
 		};
@@ -81,6 +99,7 @@
 		DB6BD9F72F6C6BF600836657 /* Homelab-widgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				DBFF83732F6DBDA20041780C /* Exceptions for "Homelab-widgets" folder in "Homelab" target */,
 				DB6BDA082F6C6BF600836657 /* Exceptions for "Homelab-widgets" folder in "Homelab-widgetsExtension" target */,
 			);
 			path = "Homelab-widgets";
