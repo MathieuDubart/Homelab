@@ -11,6 +11,7 @@ A lightweight, native iOS dashboard to monitor and control your self-hosted Cool
 - **Secure Persistence**: Server URLs and API Tokens are stored locally using `@AppStorage`.
 - **Widgets**: Keep track of your server at a glance. (Currently available in small and medium sizes)
 - **Notifications**: Get alerts when your server use too much CPU/RAM.
+- **TorBox Storage Management**: You can now manage your TorBox Storage right from the app. Feature comes with **two** new widgets, available in small and medium sizes.
 
 ## Installation
 ### 1. Get the latest release
