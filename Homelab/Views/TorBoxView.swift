@@ -37,8 +37,8 @@ struct TorBoxView: View {
             .onAppear {
                 Task { await viewModel.loadTorrents() }
             }
-            .alert("Error", isPresented: Binding(get: { viewModel.errorMessage != nil }, set: { _ in viewModel.errorMessage = nil })) {
-                Button("OK") { viewModel.errorMessage = nil }
+            .alert("Error", isPresented: $viewModel.showError) {
+                Button("OK") { }
             } message: {
                 if let errorMessage = viewModel.errorMessage { Text(errorMessage) }
             }

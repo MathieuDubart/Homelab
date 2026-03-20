@@ -16,6 +16,7 @@ class TorBoxViewModel: ObservableObject {
     @Published var torrents: [TorBoxItem] = []
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
+    @Published var showError: Bool = false
     
     @Published private var activeDownloadIDs: Set<Int> = []
     private var refreshTask: Task<Void, Never>? = nil
@@ -66,6 +67,7 @@ class TorBoxViewModel: ObservableObject {
             WidgetCenter.shared.reloadAllTimelines()
         } catch {
             self.errorMessage = error.localizedDescription
+            self.showError = true
         }
     }
     
@@ -89,6 +91,7 @@ class TorBoxViewModel: ObservableObject {
             try await service.pauseTorrent(id: id)
         } catch {
             errorMessage = "Failed to pause torrent: \(error.localizedDescription)"
+            showError = true
         }
         await loadTorrents()
     }
@@ -98,6 +101,7 @@ class TorBoxViewModel: ObservableObject {
             try await service.resumeTorrent(id: id)
         } catch {
             errorMessage = "Failed to resume torrent: \(error.localizedDescription)"
+            showError = true
         }
         await loadTorrents()
     }
