@@ -23,18 +23,25 @@ class TorBoxViewModel: ObservableObject {
     }
     
     func loadTorrents() async {
-        guard !isLoading else { return }
-        isLoading = true
-        errorMessage = nil
-        
         do {
-            self.torrents = try await service.fetchTorrents()
+            let freshTorrents = try await service.fetchTorrents()
+
+            let deletedIDs = DeletedTorrentsManager.instance.getDeletedIDs()
+            
+            let filteredTorrents = freshTorrents.filter { torrent in
+                !deletedIDs.contains(torrent.id)
+            }
+            
+            withAnimation {
+                self.torrents = filteredTorrents
+            }
+            
+            let fetchedIDs = Set(freshTorrents.map { $0.id })
+            DeletedTorrentsManager.instance.clean(keeping: fetchedIDs)
+            
         } catch {
-            errorMessage = "\(LocalizedStringResource.failedToLoadTorrents): \(error.localizedDescription)"
-            print("\(LocalizedStringResource.failedToLoadTorrents): \(error)")
+            self.errorMessage = error.localizedDescription
         }
-        
-        isLoading = false
     }
     
     func pauseTorrent(id: Int) async {
@@ -56,11 +63,19 @@ class TorBoxViewModel: ObservableObject {
     }
     
     func removeTorrent(id: Int) async {
+
+        withAnimation {
+            self.torrents.removeAll { $0.id == id }
+        }
+        
+        DeletedTorrentsManager.instance.markAsDeleted(id: id)
+        
         do {
             try await service.removeTorrent(id: id)
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            await loadTorrents()
         } catch {
-            errorMessage = "Failed to remove torrent: \(error.localizedDescription)"
+            print("⚠️ Silently handled TorBox Delete Crash for ID: \(id)")
         }
-        await loadTorrents()
     }
 }

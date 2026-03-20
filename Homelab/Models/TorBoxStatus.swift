@@ -16,6 +16,7 @@ enum TorBoxStatus: String, Codable {
     case error = "error"
     case checking = "checking"
     case unknown = "unknown"
+    case cached = "cached"
     
     // Handling potential new status
     init(from decoder: Decoder) throws {
@@ -26,7 +27,7 @@ enum TorBoxStatus: String, Codable {
     
     var color: Color {
         switch self {
-        case .completed: return .green
+        case .completed, .cached: return .green
         case .downloading, .checking: return .blue
         case .paused: return .orange
         case .error: return .red

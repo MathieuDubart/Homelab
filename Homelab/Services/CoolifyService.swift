@@ -40,10 +40,6 @@ class CoolifyService {
             throw URLError(.badServerResponse)
         }
         
-        if let body = String(data: data, encoding: .utf8) {
-            print("DEBUG RESPONSE (\(httpResponse.statusCode)): \(body)")
-        }
-        
         if !(200...299).contains(httpResponse.statusCode) {
             throw URLError(.badServerResponse)
         }
@@ -56,10 +52,6 @@ class CoolifyService {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         let (data, _) = try await URLSession.shared.data(for: request)
-        
-        if let jsonString = String(data: data, encoding: .utf8) {
-            print("🔍 JSON BRUT REÇU : \(jsonString)")
-        }
         
         let services = try JSONDecoder().decode([CoolifyServiceResource].self, from: data)
         

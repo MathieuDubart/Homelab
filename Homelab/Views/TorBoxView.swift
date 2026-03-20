@@ -73,6 +73,7 @@ struct TorBoxView: View {
                     } label: {
                         Label(LocalizedStringResource.remove, systemImage: "trash.fill")
                     }
+                    .tint(.red)
                 }
         }
     }

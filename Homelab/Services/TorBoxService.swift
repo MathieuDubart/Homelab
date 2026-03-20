@@ -27,8 +27,6 @@ class TorBoxService {
         
         var request = URLRequest(url: url)
         
-        print(request)
-        
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -56,15 +54,15 @@ class TorBoxService {
     }
     
     func pauseTorrent(id: Int) async throws {
-        try await performAction(endpoint: "/torrents/control", action: "pause", torrentId: id)
+        try await performAction(endpoint: "/torrents/controltorrent", action: "pause", torrentId: id)
     }
     
     func resumeTorrent(id: Int) async throws {
-        try await performAction(endpoint: "/torrents/control", action: "resume", torrentId: id)
+        try await performAction(endpoint: "/torrents/controltorrent", action: "resume", torrentId: id)
     }
     
     func removeTorrent(id: Int) async throws {
-        try await performAction(endpoint: "/torrents/control", action: "remove", torrentId: id)
+        try await performAction(endpoint: "/torrents/controltorrent", action: "delete", torrentId: id)
     }
     
     private func performAction(endpoint: String, action: String, torrentId: Int) async throws {

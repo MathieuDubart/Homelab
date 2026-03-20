@@ -20,9 +20,7 @@ struct HomelabApp: App {
     func requestNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                print("✅ Permission accordée !")
             } else if let error = error {
-                print("❌ Erreur permission : \(error.localizedDescription)")
             }
         }
     }

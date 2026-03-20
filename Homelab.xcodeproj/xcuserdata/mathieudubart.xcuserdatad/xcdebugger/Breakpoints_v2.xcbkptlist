@@ -14,10 +14,54 @@
             filePath = "Homelab/Services/TorBoxService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "TorBoxService"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C0578A14-4222-47A4-AF99-671FD716C48D - f711335395b2de8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Homelab.TorBoxService.performAction(endpoint: Swift.String, action: Swift.String, torrentId: Swift.Int) async throws -&gt; ()"
+                  moduleName = "Homelab.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mathieudubart/Documents/iOS-Development/Homelab/Homelab/Services/TorBoxService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91">
+               </Location>
+               <Location
+                  uuid = "C0578A14-4222-47A4-AF99-671FD716C48D - 3de41e1cd37482b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Homelab.TorBoxService.performAction(endpoint: Swift.String, action: Swift.String, torrentId: Swift.Int) async throws -&gt; ()"
+                  moduleName = "Homelab.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mathieudubart/Documents/iOS-Development/Homelab/Homelab/Services/TorBoxService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91">
+               </Location>
+               <Location
+                  uuid = "C0578A14-4222-47A4-AF99-671FD716C48D - 993294a4b1d45cbc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Homelab.TorBoxService.performAction(endpoint: Swift.String, action: Swift.String, torrentId: Swift.Int) async throws -&gt; ()"
+                  moduleName = "Homelab.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mathieudubart/Documents/iOS-Development/Homelab/Homelab/Services/TorBoxService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
