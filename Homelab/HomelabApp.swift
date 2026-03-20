@@ -20,7 +20,7 @@ struct HomelabApp: App {
     func requestNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-            } else if let error = error {
+            } else if error != nil {
             }
         }
     }

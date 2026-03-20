@@ -43,6 +43,9 @@ struct TorBoxView: View {
                 if let errorMessage = viewModel.errorMessage { Text(errorMessage) }
             }
         }
+        .refreshable {
+            await viewModel.loadTorrents()
+        }
     }
     
     private var emptyStateView: some View {

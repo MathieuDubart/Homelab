@@ -27,11 +27,18 @@ class DeletedTorrentsManager {
     
     func clean(keeping activeIDs: Set<Int>) {
         let currentIDs = getDeletedIDs()
+
         let intersection = currentIDs.intersection(activeIDs)
         sharedSuite?.set(Array(intersection), forKey: storageKey)
+        
+        if intersection.count < currentIDs.count {
+            print("🧹 DeletedTorrentsManager : Cleaned \(currentIDs.count - intersection.count) old phantom IDs.")
+        }
     }
     
     func reset() {
         sharedSuite?.removeObject(forKey: storageKey)
     }
+    
+
 }

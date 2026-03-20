@@ -16,6 +16,9 @@ class TorBoxViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
     
+    @Published private var activeDownloadIDs: Set<Int> = []
+    private var refreshTask: Task<Void, Never>? = nil
+    
     let service: TorBoxService
     
     init(token: String) {
@@ -23,6 +26,8 @@ class TorBoxViewModel: ObservableObject {
     }
     
     func loadTorrents() async {
+        refreshTask?.cancel()
+        
         do {
             let freshTorrents = try await service.fetchTorrents()
 
@@ -32,8 +37,27 @@ class TorBoxViewModel: ObservableObject {
                 !deletedIDs.contains(torrent.id)
             }
             
+            for torrent in filteredTorrents {
+                if activeDownloadIDs.contains(torrent.id) && torrent.status == .completed {
+                    NotificationManager.instance.sendDownloadCompleteNotification(torrentName: torrent.name)
+                    activeDownloadIDs.remove(torrent.id) // On le retire des "actifs"
+                }
+                
+                if torrent.status == .downloading || torrent.status == .checking {
+                    activeDownloadIDs.insert(torrent.id)
+                }
+            }
+            
             withAnimation {
                 self.torrents = filteredTorrents
+            }
+            
+            let hasActiveDownloads = filteredTorrents.contains {
+                $0.status == .downloading || $0.status == .checking || $0.status == .paused
+            }
+            
+            if filteredTorrents.isEmpty || hasActiveDownloads {
+                scheduleSmartRefresh()
             }
             
             let fetchedIDs = Set(freshTorrents.map { $0.id })
@@ -42,6 +66,21 @@ class TorBoxViewModel: ObservableObject {
         } catch {
             self.errorMessage = error.localizedDescription
         }
+    }
+    
+    private func scheduleSmartRefresh() {
+        refreshTask = Task {
+            try? await Task.sleep(nanoseconds: 5_000_000_000)
+            
+            if !Task.isCancelled {
+                print("🔄 TorBox Smart Refresh...")
+                await loadTorrents()
+            }
+        }
+    }
+    
+    deinit {
+        refreshTask?.cancel()
     }
     
     func pauseTorrent(id: Int) async {

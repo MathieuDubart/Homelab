@@ -11,6 +11,11 @@ import UserNotifications
 class NotificationManager {
     static let instance = NotificationManager()
     
+    func sendDownloadCompleteNotification(torrentName: String) {
+        let body = "\(torrentName) \(LocalizedStringResource.downloadCompleteDetails)"
+        sendAlert(title: "downloadComplete", body: body)
+    }
+    
     func sendAlert(title: String, body: String) {
         let content = UNMutableNotificationContent()
         content.title = title

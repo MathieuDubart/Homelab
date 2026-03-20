@@ -26,12 +26,15 @@ class TorBoxService {
         }
         
         var request = URLRequest(url: url)
-        
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         request.httpMethod = "GET"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let config = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: config)
+        
+        let (data, response) = try await session.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
             throw URLError(.badServerResponse)
